@@ -1,28 +1,17 @@
+import { Action } from "../actions/index";
+import { ActionType } from "../action-types/index";
+
 const iniitalState = 0;
 
-interface DepositAction {
-  type: "deposit";
-  payload: number;
-}
 
-interface WithdrawAction {
-  type: "withdraw";
-  payload: number;
-}
-
-interface BankruptAction {
-  type: "bankrupt";
-}
-
-type Action = DepositAction | WithdrawAction | BankruptAction;
 
 const bankReducer = (state: number = iniitalState, action: Action) => {
   switch (action.type) {
-    case "deposit":
+    case ActionType.DEPOSIT:
       return state + action.payload;
-    case "withdraw":
+    case ActionType.WITHDRAW:
       return state - action.payload;
-    case "bankrupt":
+    case ActionType.BANKRUPT:
       return 0;
     default:
       return state;
